@@ -1,6 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-  <h3>
-    Welcome to {{ title }}!
-  </h3>
+  <auth-form (submitted)="createUser($event)">
+    <h3>Create account</h3>
+  </auth-form>
+  <auth-form (submitted)="loginUser($event)">
+    <h3>Login</h3>
+  </auth-form>
 </div>

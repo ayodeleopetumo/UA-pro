@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Ultimate Angular Pro';
+  createUser(user) {
+    console.log(user);
+  }
+
+  loginUser(user) {
+    console.log(user);
+  }
 }
