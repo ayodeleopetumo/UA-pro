@@ -17,6 +17,8 @@ import { User } from './auth-form.interface';
           Password
           <input type="password" name="password" ngModel>
         </label>
+        <!-- The select property works just like the querySelector function;
+        by passing in tag, class or id selectors -->
         <ng-content select="button"></ng-content>
       </form>
     </div>
