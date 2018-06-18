@@ -19,6 +19,7 @@ import { User } from './auth-form.interface';
         </label>
         <!-- The select property works just like the querySelector function;
         by passing in tag, class or id selectors -->
+        <ng-content select="auth-remember"></ng-content>
         <ng-content select="button"></ng-content>
       </form>
     </div>
