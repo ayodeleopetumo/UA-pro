@@ -1,4 +1,12 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  AfterContentInit,
+  ContentChild
+} from '@angular/core';
+
+import { AuthRememberComponent } from './auth-remember.component';
 
 import { User } from './auth-form.interface';
 
@@ -20,13 +28,24 @@ import { User } from './auth-form.interface';
         <!-- The select property works just like the querySelector function;
         by passing in tag, class or id selectors -->
         <ng-content select="auth-remember"></ng-content>
+        <div *ngIf="showMessage">You will be logged in for 30days</div>
         <ng-content select="button"></ng-content>
       </form>
     </div>
   `
 })
-export class AuthFormComponent {
+export class AuthFormComponent implements AfterContentInit {
+  showMessage: boolean;
+
+  @ContentChild(AuthRememberComponent) remember: AuthRememberComponent;
+
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
+
+  ngAfterContentInit() {
+    if (this.remember) {
+      this.remember.checked.subscribe(checked => (this.showMessage = checked));
+    }
+  }
 
   onSubmit(value: User) {
     this.submitted.emit(value);
