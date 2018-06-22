@@ -10,7 +10,8 @@ import {
   AfterViewInit,
   ViewChildren,
   ChangeDetectorRef,
-  ElementRef
+  ElementRef,
+  Renderer2
 } from '@angular/core';
 
 import { AuthRememberComponent } from './auth-remember.component';
@@ -66,16 +67,27 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
 
-  constructor(private db: ChangeDetectorRef) {}
+  constructor(private db: ChangeDetectorRef, private renderer: Renderer2) {}
 
   ngAfterViewInit() {
-    console.log(this.emailRef.nativeElement);
+    // Platform agnostic DOM ref API
+    this.renderer.setAttribute(
+      this.emailRef.nativeElement,
+      'placeholder',
+      'Enter your email address'
+    );
+    this.renderer.addClass(this.emailRef.nativeElement, 'email');
+    this.emailRef.nativeElement.focus();
+
+    /*
+      Web specific DOM ref API
+
     this.emailRef.nativeElement.setAttribute(
       'placeholder',
       'Enter email address'
     );
     this.emailRef.nativeElement.classList.add('email');
-    this.emailRef.nativeElement.focus();
+    this.emailRef.nativeElement.focus(); */
 
     /*
        Reference for the ViewChildren decorator is only available in this lifecycle hook,
