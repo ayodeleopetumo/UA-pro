@@ -9,7 +9,8 @@ import {
   ViewChild,
   AfterViewInit,
   ViewChildren,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ElementRef
 } from '@angular/core';
 
 import { AuthRememberComponent } from './auth-remember.component';
@@ -20,13 +21,20 @@ import { User } from './auth-form.interface';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'auth-form',
+  styles: [
+    `
+      .email {
+        border-color: #9f72e6;
+      }
+    `
+  ],
   template: `
     <div>
       <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
         <ng-content select="h3"></ng-content>
         <label>
           Email address
-          <input type="email" name="email" ngModel>
+          <input type="email" name="email" ngModelc #email>
         </label>
         <label>
           Password
@@ -49,6 +57,7 @@ import { User } from './auth-form.interface';
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   showMessage: boolean;
 
+  @ViewChild('email') emailRef: ElementRef;
   @ViewChild(AuthMessageComponent) message: AuthMessageComponent;
   @ViewChildren(AuthMessageComponent) messages: QueryList<AuthMessageComponent>;
 
@@ -60,6 +69,14 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   constructor(private db: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
+    console.log(this.emailRef.nativeElement);
+    this.emailRef.nativeElement.setAttribute(
+      'placeholder',
+      'Enter email address'
+    );
+    this.emailRef.nativeElement.classList.add('email');
+    this.emailRef.nativeElement.focus();
+
     /*
        Reference for the ViewChildren decorator is only available in this lifecycle hook,
        but must also implement a ChangeDetector

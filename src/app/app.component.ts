@@ -7,10 +7,10 @@ import { User } from './auth-form/auth-form.interface';
   styleUrls: ['./app.component.css'],
   template: `
     <div>
-      <auth-form (submitted)="createUser($event)">
+      <!-- <auth-form (submitted)="createUser($event)">
         <h3>Create account</h3>
         <button type="submit">Join Us</button>
-      </auth-form>
+      </auth-form> -->
       <auth-form (submitted)="loginUser($event)">
         <button type="submit">Login</button>
         <auth-remember (checked)="rememberUser($event)"></auth-remember>
