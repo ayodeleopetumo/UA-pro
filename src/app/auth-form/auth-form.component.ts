@@ -45,11 +45,6 @@ import { User } from './auth-form.interface';
         by passing in tag, class or id selectors -->
         <ng-content select="auth-remember"></ng-content>
         <auth-message [style.display]="(showMessage ? 'inherit' : 'none')"></auth-message>
-        <!--
-          // For testing ViewChildren decoraror
-          <auth-message [style.display]="(showMessage ? 'inherit' : 'none')"></auth-message>
-          <auth-message [style.display]="(showMessage ? 'inherit' : 'none')"></auth-message>
-        -->
         <ng-content select="button"></ng-content>
       </form>
     </div>
