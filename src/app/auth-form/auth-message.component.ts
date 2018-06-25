@@ -5,12 +5,12 @@ import { Component, OnInit } from '@angular/core';
   selector: 'auth-message',
   template: `
     <div>
-      You will be logged in for {{ numberOfDays }} days
+      You will be logged in for {{ days }} days
     </div>
   `
 })
 export class AuthMessageComponent implements OnInit {
-  numberOfDays = 7;
+  days = 7;
 
   constructor() {}
 
