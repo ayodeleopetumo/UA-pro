@@ -88,7 +88,7 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
        Reference for the ViewChildren decorator is only available in this lifecycle hook,
        but must also implement a ChangeDetector
     */
-    this.messages.forEach(message => (message.numberOfDays = 30));
+    this.messages.forEach(message => (message.days = 30));
     this.db.detectChanges();
   }
 
