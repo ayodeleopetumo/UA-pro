@@ -111,10 +111,6 @@ form {
   padding: 0 40px;
 }
 
-auth-form:first-child form {
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
 input {
   display: block;
   border: none;
