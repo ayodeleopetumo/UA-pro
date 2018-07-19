@@ -14,6 +14,7 @@ import { AuthMessageComponent } from './auth-message.component';
     AuthRememberComponent,
     AuthMessageComponent
   ],
-  providers: []
+  providers: [],
+  entryComponents: [AuthFormComponent]
 })
 export class AuthFormModule {}
