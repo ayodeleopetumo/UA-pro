@@ -1,6 +1,7 @@
 import {
   Component,
   ViewChild,
+  ComponentRef,
   ViewContainerRef,
   ComponentFactoryResolver,
   AfterContentInit
@@ -15,11 +16,13 @@ import { User } from './auth-form/auth-form.interface';
   styleUrls: ['./app.component.css'],
   template: `
     <div>
-      <div #dynamicComp></div>
+      <ng-template #dynamicComp></ng-template>
     </div>
   `
 })
 export class AppComponent implements AfterContentInit {
+  component: ComponentRef<AuthFormComponent>;
+
   @ViewChild('dynamicComp', { read: ViewContainerRef })
   dynamicComp: ViewContainerRef;
 
@@ -29,7 +32,9 @@ export class AppComponent implements AfterContentInit {
     const authFormFactory = this.resolver.resolveComponentFactory(
       AuthFormComponent
     );
-    const component = this.dynamicComp.createComponent(authFormFactory);
+    this.component = this.dynamicComp.createComponent(authFormFactory);
+    this.component.instance.title = 'Create account';
+    this.component.instance.submitted.subscribe(this.loginUser);
   }
 
   loginUser(user: User) {
