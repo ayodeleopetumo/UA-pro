@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { AuthFormComponent } from './auth-form.component';
 import { AuthRememberComponent } from './auth-remember.component';
 import { AuthMessageComponent } from './auth-message.component';
+import { AuthFormDirective } from './auth-form.directive';
 
 @NgModule({
   imports: [FormsModule, CommonModule],
@@ -12,7 +13,8 @@ import { AuthMessageComponent } from './auth-message.component';
   declarations: [
     AuthFormComponent,
     AuthRememberComponent,
-    AuthMessageComponent
+    AuthMessageComponent,
+    AuthFormDirective
   ],
   providers: [],
   entryComponents: [AuthFormComponent]

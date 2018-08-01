@@ -18,7 +18,7 @@ import { User } from './auth-form.interface';
         <h3>{{ title }}</h3>
         <label>
           Email address
-          <input type="email" name="email" ngModel #email>
+          <input type="email" name="email" ngModel #email appFormatPassword>
         </label>
         <label>
           Password
