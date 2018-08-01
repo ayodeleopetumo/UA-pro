@@ -15,7 +15,7 @@ import { User } from './auth-form.interface';
   template: `
     <div>
       <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
-        <h3>{{ title }}</h3>
+        <h3>{{ title | uppercaseTransform }}</h3>
         <label>
           Email address
           <input type="email" name="email" ngModel #email appFormatPassword>
