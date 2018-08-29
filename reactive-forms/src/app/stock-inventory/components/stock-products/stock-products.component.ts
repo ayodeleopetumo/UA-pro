@@ -19,8 +19,11 @@ import { FormGroup, FormArray } from '@angular/forms';
   `
 })
 export class StockProductsComponent implements OnInit {
-  @Input() parent: FormGroup;
-  @Output() removed = new EventEmitter<any>();
+  @Input()
+  parent: FormGroup;
+
+  @Output()
+  removed = new EventEmitter<any>();
 
   constructor() {}
 
